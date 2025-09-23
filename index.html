@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Learn Parts of Speech — Interactive</title>
+  <style>
+    :root{--accent:#0b63ff;--accent-2:#ff8a00;--bg:#f7f9fc;--card:#ffffff;--muted:#6b7280}
+    body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neue',Arial;margin:0;background:var(--bg);color:#0f172a}
+    header{background:linear-gradient(90deg,var(--accent),var(--accent-2));color:#fff;padding:28px 20px}
+    .wrap{max-width:1000px;margin:20px auto;padding:0 16px}
+    h1{margin:0;font-size:1.6rem}
+    p.lead{margin:8px 0 0;opacity:.95}
+    nav{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+    .btn{background:#fff;color:var(--accent);padding:8px 12px;border-radius:8px;text-decoration:none;font-weight:600}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin-top:18px}
+    .card{background:var(--card);padding:14px;border-radius:12px;box-shadow:0 6px 18px rgba(11,99,255,0.06)}
+    .card h3{margin:0 0 8px}
+    .examples{font-size:0.95rem;color:var(--muted);margin:8px 0}
+    .example{margin:6px 0;padding:8px;border-radius:8px;background:#fbfdff;border:1px solid #eef6ff}
+    footer{max-width:1000px;margin:22px auto;padding:12px 16px;color:var(--muted);font-size:0.9rem}
+    .quiz{display:flex;flex-direction:column;gap:8px}
+    .choices{display:flex;flex-direction:column;gap:8px}
+    button.choice{padding:10px;border-radius:8px;border:1px solid #e6eefc;background:#fff;text-align:left}
+    button.choice.correct{border-color:#16a34a;background:#ecfdf5}
+    button.choice.wrong{border-color:#ef4444;background:#fff7f7}
+    .controls{display:flex;gap:8px;align-items:center;margin-top:8px}
+    .small{font-size:0.9rem;color:var(--muted)}
+    @media (max-width:520px){header{padding:18px}}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap">
+      <h1>Parts of Speech — Quick Lessons & Interactive Quiz</h1>
+      <p class="lead">Short explanations, clear examples, and instant-feedback practice for each part of speech.</p>
+      <nav>
+        <a class="btn" href="#lessons">Lessons</a>
+        <a class="btn" href="#examples">Examples</a>
+        <a class="btn" href="#quiz">Quiz</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section id="lessons">
+      <h2 style="margin-top:10px">Lessons</h2>
+      <div class="grid">
+        <!-- Noun -->
+        <article class="card">
+          <h3>Noun</h3>
+          <div class="examples">Definition: A noun is a word that names a person, place, thing, or idea.</div>
+          <div class="example"><strong>People:</strong> teacher, Engr. Martin</div>
+          <div class="example"><strong>Places:</strong> school, Abuja</div>
+          <div class="example"><strong>Things/Ideas:</strong> book, freedom</div>
+        </article>
+        <!-- Verb -->
+        <article class="card">
+          <h3>Verb</h3>
+          <div class="examples">Definition: A verb shows action or a state of being.</div>
+          <div class="example"><strong>Action:</strong> run, study, write</div>
+          <div class="example"><strong>State:</strong> is, seem, become</div>
+        </article>
+        <!-- Adjective -->
+        <article class="card">
+          <h3>Adjective</h3>
+          <div class="examples">Definition: Adjectives describe or modify nouns.</div>
+          <div class="example">Examples: big, smart, blue, three</div>
+        </article>
+        <!-- Adverb -->
+        <article class="card">
+          <h3>Adverb</h3>
+          <div class="examples">Definition: Adverbs modify verbs, adjectives, or other adverbs — often tell how, when, where, or to what extent.</div>
+          <div class="example">Examples: quickly, very, yesterday, outside</div>
+        </article>
+        <!-- Pronoun -->
+        <article class="card">
+          <h3>Pronoun</h3>
+          <div class="examples">Definition: A pronoun replaces a noun.</div>
+          <div class="example">Examples: I, you, he, she, they, it</div>
+        </article>
+        <!-- Preposition -->
+        <article class="card">
+          <h3>Preposition</h3>
+          <div class="examples">Definition: Shows relationship of a noun/pronoun to another word (time, place, direction).</div>
+          <div class="example">Examples: in, on, at, before, under</div>
+        </article>
+        <!-- Conjunction -->
+        <article class="card">
+          <h3>Conjunction</h3>
+          <div class="examples">Definition: Joins words, phrases, or clauses.</div>
+          <div class="example">Examples: and, but, or, because, although</div>
+        </article>
+        <!-- Interjection -->
+        <article class="card">
+          <h3>Interjection</h3>
+          <div class="examples">Definition: A short exclamation expressing emotion.</div>
+          <div class="example">Examples: Hey! Wow! Ouch!</div>
+        </article>
+      </div>
+    </section>
+
+    <section id="examples" style="margin-top:18px">
+      <h2>Sentence Examples & Highlight</h2>
+      <div class="card">
+        <p class="small">Click any word to reveal its part of speech.</p>
+        <p id="sentence">Engr. Martin teaches students quickly in the bright classroom.</p>
+        <div class="small" style="margin-top:8px">Tap words to learn:</div>
+        <div style="margin-top:8px;display:flex;flex-wrap:wrap;gap:8px">
+          <!-- Words will be generated by JS -->
+        </div>
+      </div>
+    </section>
+
+    <section id="quiz" style="margin-top:18px">
+      <h2>Interactive Quiz</h2>
+      <div class="card">
+        <div class="quiz">
+          <div id="qtxt">Question will appear here.</div>
+          <div class="choices" id="choices"></div>
+          <div class="controls">
+            <button id="next" class="btn" style="background:var(--accent);color:#fff;border:none">Next</button>
+            <div class="small" id="score">Score: 0 / 0</div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    Created for quick practice — customize the questions, add audio, or connect to a backend for progress tracking.
+  </footer>
+
+  <script>
+    // --- Sentence word click demo ---
+    const sentence = document.getElementById('sentence');
+    const wordBank = sentence.textContent.trim().split(/\s+/).map(w=>w.replace(/[^\w\.\'\-]/g,''));
+    const container = sentence.nextElementSibling.nextElementSibling;
+    const parts = {
+      'Engr': 'Noun','Martin':'Noun','teaches':'Verb','students':'Noun','quickly':'Adverb','in':'Preposition','the':'Determiner','bright':'Adjective','classroom':'Noun'
+    };
+    function makeWordBtn(word){
+      const b = document.createElement('button');
+      b.className='choice'; b.style.border='1px solid #e6eefc'; b.textContent = word;
+      b.onclick = ()=>{ alert(`\"${word}\" → ${parts[word]||'(unknown — could be noun/verb/etc)'} `) }
+      return b;
+    }
+    wordBank.forEach(w=>container.appendChild(makeWordBtn(w)));
+
+    // --- Quiz logic ---
+    const questions = [
+      {q:'Identify the part of speech: "She sings beautifully." What is "beautifully"?', a:'Adverb', opts:['Adjective','Adverb','Noun','Verb']},
+      {q:'Identify the part of speech: "The small cat slept." What is "small"?', a:'Adjective', opts:['Verb','Adjective','Preposition','Pronoun']},
+      {q:'Which word is a preposition in: "The book is on the table."', a:'on', opts:['book','is','on','table']},
+      {q:'Identify the part of speech: "Wow! That was amazing." What is "Wow"?', a:'Interjection', opts:['Noun','Interjection','Conjunction','Adverb']},
+      {q:'Which is a pronoun?', a:'They', opts:['They','Happy','Run','Beautiful']}
+    ];
+    let idx = 0, score = 0, total = 0;
+    const qtxt = document.getElementById('qtxt');
+    const choicesDiv = document.getElementById('choices');
+    const nextBtn = document.getElementById('next');
+    const scoreEl = document.getElementById('score');
+
+    function loadQuestion(i){
+      const Q = questions[i];
+      qtxt.textContent = Q.q;
+      choicesDiv.innerHTML = '';
+      Q.opts.forEach(opt=>{
+        const b = document.createElement('button');
+        b.className='choice'; b.textContent = opt;
+        b.onclick = ()=>selectAnswer(b,opt,Q.a);
+        choicesDiv.appendChild(b);
+      });
+    }
+    function selectAnswer(btn,opt,ans){
+      // disable all choices
+      Array.from(choicesDiv.children).forEach(ch=>ch.disabled=true);
+      total++;
+      if(opt===ans){ btn.classList.add('correct'); score++; }
+      else { btn.classList.add('wrong');
+        // mark correct one
+        Array.from(choicesDiv.children).forEach(ch=>{ if(ch.textContent===ans) ch.classList.add('correct'); })
+      }
+      scoreEl.textContent = `Score: ${score} / ${total}`;
+    }
+    nextBtn.onclick = ()=>{ idx = (idx+1) % questions.length; loadQuestion(idx); }
+    // initialize
+    loadQuestion(idx);
+
+  </script>
+</body>
+</html>
